@@ -14,41 +14,50 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(kPadding),
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(5),
+          child: CircleAvatar(
+            radius: 30,
+            backgroundColor: Get.theme.splashColor,
+            backgroundImage: const NetworkImage(
+              "https://firebasestorage.googleapis.com/v0/b/nextlevelsoftpk.appspot.com/o/Files%2Ffile-20240409072352625_OPj0A.jpeg?alt=media",
+            ),
+          ),
+        ),
+        centerTitle: false,
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Hi,",
+              style: Get.textTheme.bodyMedium,
+            ),
+            const Gap(5),
+            Text(
+              "Chand Abdullah",
+              style: Get.textTheme.bodyLarge,
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            iconSize: 30,
+            icon: const Icon(
+              Icons.settings_outlined,
+            ),
+          ),
+          const Gap(5),
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(kPadding),
+        child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Get.theme.splashColor,
-                    backgroundImage: const NetworkImage(
-                      "https://firebasestorage.googleapis.com/v0/b/nextlevelsoftpk.appspot.com/o/Files%2Ffile-20240409072352625_OPj0A.jpeg?alt=media",
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    iconSize: 30,
-                    icon: const Icon(
-                      Icons.settings_outlined,
-                    ),
-                  ),
-                ],
-              ),
-              const Gap(20),
-              Text(
-                "Hi",
-                style: Get.textTheme.titleMedium,
-              ),
-              Text(
-                "Chand Abdullah",
-                style: Get.textTheme.titleLarge,
-              ),
-              const Gap(20),
               Container(
                 width: Get.width,
                 padding: const EdgeInsets.all(kPadding),
@@ -68,7 +77,7 @@ class HomeView extends GetView<HomeController> {
                       child: const Icon(
                         Icons.timer_outlined,
                         size: 30,
-                        color: Colors.black,
+                        color: AppColors.textColor,
                       ),
                     ),
                     const Gap(10),
@@ -82,14 +91,14 @@ class HomeView extends GetView<HomeController> {
                               Text(
                                 "Ongoing",
                                 style: Get.textTheme.titleLarge?.copyWith(
-                                  color: Colors.black,
+                                  color: AppColors.textColor,
                                 ),
                               ),
                               const Gap(5),
                               Text(
                                 "10 tasks",
                                 style: Get.textTheme.bodyMedium?.copyWith(
-                                  color: Colors.black,
+                                  color: AppColors.textColor,
                                 ),
                               ),
                             ],
@@ -100,12 +109,12 @@ class HomeView extends GetView<HomeController> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: Colors.black,
+                              color: AppColors.textColor,
                             ),
                           ),
                           child: const Icon(
                             Icons.arrow_outward_rounded,
-                            color: Colors.black,
+                            color: AppColors.textColor,
                             size: 20,
                           ),
                         ),
@@ -142,7 +151,7 @@ class HomeView extends GetView<HomeController> {
                                           "Pending",
                                           style: Get.textTheme.titleLarge
                                               ?.copyWith(
-                                            color: Colors.black,
+                                            color: AppColors.textColor,
                                           ),
                                         ),
                                         const Gap(10),
@@ -150,7 +159,7 @@ class HomeView extends GetView<HomeController> {
                                           "05 tasks",
                                           style: Get.textTheme.bodyMedium
                                               ?.copyWith(
-                                            color: Colors.black,
+                                            color: AppColors.textColor,
                                           ),
                                         ),
                                       ],
@@ -166,7 +175,7 @@ class HomeView extends GetView<HomeController> {
                                     child: const Icon(
                                       Icons.pending_outlined,
                                       size: 30,
-                                      color: Colors.black,
+                                      color: AppColors.textColor,
                                     ),
                                   ),
                                 ],
@@ -193,7 +202,7 @@ class HomeView extends GetView<HomeController> {
                                           "Completed",
                                           style: Get.textTheme.titleLarge
                                               ?.copyWith(
-                                            color: Colors.black,
+                                            color: AppColors.textColor,
                                           ),
                                         ),
                                         const Gap(10),
@@ -201,7 +210,7 @@ class HomeView extends GetView<HomeController> {
                                           "17 tasks",
                                           style: Get.textTheme.bodyMedium
                                               ?.copyWith(
-                                            color: Colors.black,
+                                            color: AppColors.textColor,
                                           ),
                                         ),
                                       ],
@@ -217,7 +226,7 @@ class HomeView extends GetView<HomeController> {
                                     child: const Icon(
                                       Icons.task_alt_outlined,
                                       size: 30,
-                                      color: Colors.black,
+                                      color: AppColors.textColor,
                                     ),
                                   ),
                                 ],
@@ -248,7 +257,7 @@ class HomeView extends GetView<HomeController> {
                               child: const Icon(
                                 Icons.cancel_outlined,
                                 size: 30,
-                                color: Colors.black,
+                                color: AppColors.textColor,
                               ),
                             ),
                             const Spacer(),
@@ -258,14 +267,14 @@ class HomeView extends GetView<HomeController> {
                                 Text(
                                   "Cancel",
                                   style: Get.textTheme.titleLarge?.copyWith(
-                                    color: Colors.black,
+                                    color: AppColors.textColor,
                                   ),
                                 ),
                                 const Gap(10),
                                 Text(
                                   "02 tasks",
                                   style: Get.textTheme.bodyMedium?.copyWith(
-                                    color: Colors.black,
+                                    color: AppColors.textColor,
                                   ),
                                 ),
                               ],
@@ -357,6 +366,9 @@ class HomeView extends GetView<HomeController> {
                                 ),
                                 child: Text(
                                   item.replaceAll('-', ' ').capitalize ?? "",
+                                  style: Get.textTheme.bodySmall!.copyWith(
+                                    color: AppColors.textColor,
+                                  ),
                                 ),
                               ),
                               Text(

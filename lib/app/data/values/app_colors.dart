@@ -7,6 +7,8 @@ class AppColors {
   static const Color cancelled = Color(0xFFFF9292);
   static const Color inRevision = Color(0xFFffbd92);
 
+  static const Color textColor = Colors.black;
+
   static Color getColorByType(String type) {
     switch (type) {
       case 'ongoing':
