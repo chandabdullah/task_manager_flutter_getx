@@ -28,7 +28,7 @@ class DarkThemeColors {
   static const Color iconColor = Colors.white;
 
   //BUTTON
-  static const Color buttonColor = Color(0xFF7343be);
+  static Color buttonColor = primaryColor;
   static const Color buttonTextColor = Colors.black;
   static const Color buttonDisabledColor = Colors.grey;
   static const Color buttonDisabledTextColor = Colors.black;

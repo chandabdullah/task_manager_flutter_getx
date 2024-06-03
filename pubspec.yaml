@@ -13,6 +13,9 @@ dependencies:
   flutter_screenutil: ^5.9.3
   get_storage: ^2.1.1
   gap: ^3.0.1
+  intl: ^0.19.0
+  google_fonts: ^6.2.1
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies: 
   flutter_lints: 4.0.0
@@ -22,3 +25,6 @@ dev_dependencies:
 flutter: 
   uses-material-design: true
 
+  assets: 
+    - assets/
+    - assets/svg/

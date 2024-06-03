@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '/app/data/local/my_shared_pref.dart';
 
 import '/config/theme/dark_theme_colors.dart';
@@ -9,6 +10,8 @@ import 'package:flutter/material.dart';
 class MyTheme {
   static ThemeData getThemeData({required bool isLight}) {
     return ThemeData(
+      fontFamily: GoogleFonts.aBeeZee().fontFamily,
+
       useMaterial3: true,
       // main color (app bar,tabs..etc)
       primaryColor: isLight
@@ -72,7 +75,9 @@ class MyTheme {
       elevatedButtonTheme:
           MyStyles.getElevatedButtonTheme(isLightTheme: isLight),
 
-      // textButtonTheme: MyStyles.getTextButtonTheme(isLightTheme: isLight),
+      textButtonTheme: MyStyles.getTextButtonTheme(isLightTheme: isLight),
+      outlinedButtonTheme:
+          MyStyles.getOutlinedButtonThemeData(isLightTheme: isLight),
 
       // text theme
       textTheme: MyStyles.getTextTheme(isLightTheme: isLight),

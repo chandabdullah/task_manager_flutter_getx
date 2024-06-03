@@ -36,7 +36,7 @@ class LightThemeColors {
   static Color iconColor = primaryColor;
 
   //BUTTON
-  static Color buttonColor = customSecondaryColor;
+  static Color buttonColor = primaryColor;
   static const Color buttonTextColor = Colors.white;
   static const Color buttonDisabledColor = Colors.grey;
   static const Color buttonDisabledTextColor = Colors.black;

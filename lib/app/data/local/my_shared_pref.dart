@@ -29,7 +29,7 @@ class MySharedPref {
   /// get if the current theme type is light
   static bool getThemeIsLight() =>
       _storage.read(_lightThemeKey) ??
-      true; // todo set the default theme (true for light, false for dark)
+      false; // todo set the default theme (true for light, false for dark)
 
   /// save current locale
   static void setCurrentLanguage(String languageCode) =>

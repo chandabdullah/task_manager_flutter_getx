@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:task_manager_flutter_getx/app/constants/app_constants.dart';
 
 import 'dark_theme_colors.dart';
 import 'my_fonts.dart';
@@ -20,9 +21,49 @@ class MyStyles {
   /// input theme
   static InputDecorationTheme getInputTheme({required bool isLightTheme}) =>
       InputDecorationTheme(
-        prefixIconColor: isLightTheme
-            ? LightThemeColors.primaryColor
-            : DarkThemeColors.primaryColor,
+        hintStyle: Get.textTheme.bodySmall,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(kBorderRadius),
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: kSpacing,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        labelStyle: Get.textTheme.bodyMedium?.copyWith(
+          color: MaterialStateColor.resolveWith(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.focused)) {
+                return isLightTheme
+                    ? LightThemeColors.primaryColor
+                    : DarkThemeColors.primaryColor;
+              }
+              if (states.contains(MaterialState.error)) {
+                return Colors.red;
+              }
+              return isLightTheme
+                  ? LightThemeColors.hintTextColor
+                  : DarkThemeColors.hintTextColor;
+            },
+          ),
+        ),
+        prefixIconColor:
+            MaterialStateColor.resolveWith((Set<MaterialState> states) {
+          if (states.contains(MaterialState.focused)) {
+            return isLightTheme
+                ? LightThemeColors.primaryColor
+                : DarkThemeColors.primaryColor;
+          }
+          if (states.contains(MaterialState.error)) {
+            return Colors.red;
+          }
+          return isLightTheme
+              ? LightThemeColors.hintTextColor
+              : DarkThemeColors.hintTextColor;
+        }),
+
+        // prefixIconColor: isLightTheme
+        //     ? LightThemeColors.primaryColor
+        //     : DarkThemeColors.primaryColor,
         suffixIconColor: isLightTheme
             ? LightThemeColors.primaryColor
             : DarkThemeColors.primaryColor,
@@ -218,12 +259,28 @@ class MyStyles {
           padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
               EdgeInsets.symmetric(vertical: 8.h)),
           textStyle: getElevatedButtonTextStyle(isLightTheme),
+          foregroundColor: MaterialStateProperty.resolveWith<Color>(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.pressed)) {
+                return isLightTheme
+                    ? LightThemeColors.buttonTextColor
+                    : DarkThemeColors.buttonTextColor;
+              } else if (states.contains(MaterialState.disabled)) {
+                return isLightTheme
+                    ? LightThemeColors.buttonTextColor
+                    : DarkThemeColors.buttonTextColor;
+              }
+              return isLightTheme
+                  ? LightThemeColors.buttonTextColor
+                  : DarkThemeColors.buttonTextColor;
+            },
+          ),
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
               if (states.contains(MaterialState.pressed)) {
                 return isLightTheme
-                    ? LightThemeColors.buttonColor
-                    : DarkThemeColors.buttonColor;
+                    ? LightThemeColors.buttonColor.withOpacity(.5)
+                    : DarkThemeColors.buttonColor.withOpacity(.5);
               } else if (states.contains(MaterialState.disabled)) {
                 return isLightTheme
                     ? LightThemeColors.buttonDisabledColor
@@ -231,7 +288,7 @@ class MyStyles {
               }
               return isLightTheme
                   ? LightThemeColors.buttonColor
-                  : DarkThemeColors.buttonColor; // Use the component's default.
+                  : DarkThemeColors.buttonColor;
             },
           ),
         ),
@@ -249,25 +306,66 @@ class MyStyles {
           ),
           elevation: MaterialStateProperty.all(0),
           padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              EdgeInsets.symmetric(vertical: 8.h)),
-          textStyle: getElevatedButtonTextStyle(isLightTheme),
+              EdgeInsets.symmetric(
+            vertical: 8.h,
+            horizontal: 5.w,
+          )),
+          // textStyle: getElevatedButtonTextStyle(isLightTheme, isBold: false),
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
               if (states.contains(MaterialState.pressed)) {
                 return isLightTheme
-                    ? LightThemeColors.primaryColor
-                    : DarkThemeColors.primaryColor;
+                    ? LightThemeColors.primaryColor.withOpacity(.1)
+                    : DarkThemeColors.primaryColor.withOpacity(.1);
               } else if (states.contains(MaterialState.disabled)) {
                 return isLightTheme
                     ? LightThemeColors.buttonDisabledColor
                     : DarkThemeColors.buttonDisabledColor;
               }
-              return isLightTheme
-                  ? LightThemeColors.primaryColor
-                  : DarkThemeColors
-                      .primaryColor; // Use the component's default.
+              return Colors.transparent;
             },
           ),
+        ),
+      );
+
+  static OutlinedButtonThemeData getOutlinedButtonThemeData(
+          {required bool isLightTheme}) =>
+      OutlinedButtonThemeData(
+        style: ButtonStyle(
+          side: MaterialStateProperty.all<BorderSide?>(
+            BorderSide(
+              color: isLightTheme
+                  ? LightThemeColors.primaryColor
+                  : DarkThemeColors.primaryColor,
+              width: 1.0,
+            ),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6.r),
+            ),
+          ),
+          elevation: MaterialStateProperty.all(0),
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+              EdgeInsets.symmetric(vertical: 8.h)),
+          textStyle: getElevatedButtonTextStyle(isLightTheme),
+          // backgroundColor: MaterialStateProperty.resolveWith<Color>(
+          //   (Set<MaterialState> states) {
+          //     if (states.contains(MaterialState.pressed)) {
+          //       return isLightTheme
+          //           ? LightThemeColors.primaryColor
+          //           : DarkThemeColors.primaryColor;
+          //     } else if (states.contains(MaterialState.disabled)) {
+          //       return isLightTheme
+          //           ? LightThemeColors.buttonDisabledColor
+          //           : DarkThemeColors.buttonDisabledColor;
+          //     }
+          //     return isLightTheme
+          //         ? LightThemeColors.primaryColor
+          //         : DarkThemeColors
+          //             .primaryColor; // Use the component's default.
+          //   },
+          // ),
         ),
       );
 }
