@@ -38,7 +38,7 @@ class SettingsView extends GetView<SettingsController> {
                           radius: 40,
                           backgroundColor: Get.theme.splashColor,
                           backgroundImage: const NetworkImage(
-                            "https://firebasestorage.googleapis.com/v0/b/nextlevelsoftpk.appspot.com/o/Files%2Ffile-20240409072352625_OPj0A.jpeg?alt=media",
+                            "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_original/v1/attachments/profile/photo/495e90469bb808f83f44735572e2a6e7-1726940392490/073f53df-f23c-44cb-9bea-b9c363fa6ee7.png",
                           ),
                         ),
                       ),
